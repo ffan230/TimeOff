@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="327.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
+	<tabs>
+		<Tab text="多久后关机">
+			<content>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100" prefWidth="300">
+					<children>
+						<Button fx:id="XC_quxiaoguanji" layoutX="10" layoutY="208.0" mnemonicParsing="false" onAction="#cancelShutdown" prefHeight="36.0" prefWidth="307.0" text="取消关机计划" />
+						<Button fx:id="XC_queding" layoutX="10" layoutY="163.0" mnemonicParsing="false" onAction="#timeToShutdown" prefHeight="36.0" prefWidth="148.5" text="确定" />
+						<Button fx:id="XC_quxiao" layoutX="168.5" layoutY="163.0" mnemonicParsing="false" onAction="#exit" prefHeight="36.0" prefWidth="148.5" text="取消" />
+						<TextField fx:id="XC_shi" layoutX="39.0" layoutY="75.0" prefHeight="36.0" prefWidth="53.0" text="1" />
+						<Label layoutX="100.0" layoutY="81.0" text="时" />
+						<Label layoutX="185.0" layoutY="81.0" text="分" />
+						<Label layoutX="268.0" layoutY="81.0" text="秒" />
+						<TextField fx:id="XC_fen" layoutX="124.0" layoutY="75.0" prefHeight="36.0" prefWidth="53.0" text="0" />
+						<TextField fx:id="XC_miao" layoutX="208.0" layoutY="75.0" prefHeight="36.0" prefWidth="53.0" text="0" />
+					</children>
+				</AnchorPane>
+			</content>
+		</Tab>
+		<Tab text="具体时间关机">
+			<content>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100" prefWidth="300">
+					<children>
+						<Button fx:id="JT_quxiaoguanji" layoutX="10" layoutY="208.0" mnemonicParsing="false" onAction="#cancelShutdown" prefHeight="36.0" prefWidth="307.0" text="取消关机计划" />
+						<Button fx:id="JT_queding" layoutX="10" layoutY="163.0" mnemonicParsing="false" onAction="#smartTimeToShutdown" prefHeight="36.0" prefWidth="148.5" text="确定" />
+						<Button fx:id="JT_quxiao" layoutX="168.5" layoutY="163.0" mnemonicParsing="false" onAction="#exit" prefHeight="36.0" prefWidth="148.5" text="取消" />
+						<TextField fx:id="JT_shi" layoutX="75.0" layoutY="75.0" prefHeight="36.0" prefWidth="77.0" text="0" />
+						<Label layoutX="154.0" layoutY="81.0" prefHeight="24.0" prefWidth="25" text="：" />
+						<TextField fx:id="JT_fen" layoutX="174.0" layoutY="75.0" prefHeight="36.0" prefWidth="77.0" text="0" />
+					</children>
+				</AnchorPane>
+			</content>
+		</Tab>
+	</tabs>
+</TabPane>
