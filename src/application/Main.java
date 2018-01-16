@@ -25,7 +25,7 @@ public class Main extends Application {
 			// Read file fxml and draw interface.
 			Parent root = FXMLLoader.load(getClass().getResource("/application/JieMian.fxml"));
 
-			primaryStage.setTitle("定时关机");
+			primaryStage.setTitle("瀹氭椂鍏虫満");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 

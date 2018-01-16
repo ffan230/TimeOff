@@ -47,7 +47,7 @@ public class MyController implements Initializable {
 	}
 
 	public String needZero(int ob) {
-		// ÊäÈëÒ»¸öintÊı£¬Ò»Î»ÊıÔò²¹0Êä³öStringĞÍ·ÇÒ»Î»ÊıÖ±½ÓÊä³öStringĞÍ
+		// è¾“å…¥ä¸€ä¸ªintæ•°ï¼Œä¸€ä½æ•°åˆ™è¡¥0è¾“å‡ºStringå‹éä¸€ä½æ•°ç›´æ¥è¾“å‡ºStringå‹
 		String obs = ob + "";
 		if (obs.length() == 1) {
 			return "0" + obs;
@@ -57,9 +57,9 @@ public class MyController implements Initializable {
 	}
 
 	/**
-	 * ÊäÈë¾ßÌåÊ±ºÍ·Ö£¬Éè¶¨¹Ø»úÊ±¼ä¡£
-	 * Èç¹ûÉèÖÃµÄÊ±¼ä³¬¹ı½ñÌìµÄ·¶Î§£¬½«×Ô¶¯ÉèÖÃÎª´ÎÈÕ¸ÃÊ±¡£
-	 * ÀıÈç£ºÏÖÔÚÊÇ14:30,ÉèÖÃ¹Ø»úÊ±¼äÎª14:20,ÔòÊµ¼Ê¹Ø»úÊ±¼äÎª´ÎÈÕ14:20
+	 * è¾“å…¥å…·ä½“æ—¶å’Œåˆ†ï¼Œè®¾å®šå…³æœºæ—¶é—´ã€‚
+	 * å¦‚æœè®¾ç½®çš„æ—¶é—´è¶…è¿‡ä»Šå¤©çš„èŒƒå›´ï¼Œå°†è‡ªåŠ¨è®¾ç½®ä¸ºæ¬¡æ—¥è¯¥æ—¶ã€‚
+	 * ä¾‹å¦‚ï¼šç°åœ¨æ˜¯14:30,è®¾ç½®å…³æœºæ—¶é—´ä¸º14:20,åˆ™å®é™…å…³æœºæ—¶é—´ä¸ºæ¬¡æ—¥14:20
 	 * @param smartHour
 	 * @param smartMinute
 	 * @throws Exception
@@ -72,9 +72,9 @@ public class MyController implements Initializable {
 		MyController ha = new MyController();
 		ha.cancelShutdown(event);
 		
-		// È¡µÃÏÖÔÚµÄdate
+		// å–å¾—ç°åœ¨çš„date
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		// DateÀàµÄÌæ´úÆ· ¹¦ÄÜÒ»Ñù
+		// Dateç±»çš„æ›¿ä»£å“ åŠŸèƒ½ä¸€æ ·
 		Calendar rightNow = Calendar.getInstance();
 		int nowy = rightNow.get(Calendar.YEAR);
 		int nowM = rightNow.get(Calendar.MONTH) + 1;
@@ -82,10 +82,10 @@ public class MyController implements Initializable {
 		int nowh = rightNow.get(Calendar.HOUR_OF_DAY);
 		int nowm = rightNow.get(Calendar.MINUTE);
 		int nows = rightNow.get(Calendar.SECOND);
-		// ½øĞĞresultµÄ¼ÆËã
+		// è¿›è¡Œresultçš„è®¡ç®—
 		if (smartHour > nowh || smartHour == nowh && smartMinute > nowm) {
-			// Í¬ÈÕ
-			// Æ´½ÓµÄÓÃ»§Ñ¡ÔñÈÕÆÚ¼õÈ¥ÏÖÔÚÈÕÆÚµÃµ½µÄÃëÊı
+			// åŒæ—¥
+			// æ‹¼æ¥çš„ç”¨æˆ·é€‰æ‹©æ—¥æœŸå‡å»ç°åœ¨æ—¥æœŸå¾—åˆ°çš„ç§’æ•°
 			int result = ((int) (sdf.parse(nowy + "-" + ha.needZero(nowM) + "-" + ha.needZero(nowd) + " "
 					+ ha.needZero(smartHour) + ":" + ha.needZero(smartMinute) + ":" + ha.needZero(nows)).getTime())
 					- (int) (sdf.parse(nowy + "-" + ha.needZero(nowM) + "-" + ha.needZero(nowd) + " "
@@ -94,8 +94,8 @@ public class MyController implements Initializable {
 
 			Runtime.getRuntime().exec("shutdown -s -t " + result);
 		} else if (smartHour < nowh || smartHour == nowh && smartMinute < nowm) {
-			// ²»Í¬ÈÕ
-			// Æ´½ÓµÄÓÃ»§Ñ¡ÔñÈÕÆÚ¼õÈ¥ÏÖÔÚÈÕÆÚµÃµ½µÄÃëÊı£¨ÒòÎª¿çÈÕ£¬ĞèÒª¼ÓÉÏ86400000ºÁÃë£©
+			// ä¸åŒæ—¥
+			// æ‹¼æ¥çš„ç”¨æˆ·é€‰æ‹©æ—¥æœŸå‡å»ç°åœ¨æ—¥æœŸå¾—åˆ°çš„ç§’æ•°ï¼ˆå› ä¸ºè·¨æ—¥ï¼Œéœ€è¦åŠ ä¸Š86400000æ¯«ç§’ï¼‰
 			int result = ((int) (sdf.parse(nowy + "-" + ha.needZero(nowM) + "-" + ha.needZero(nowd) + " "
 					+ ha.needZero(smartHour) + ":" + ha.needZero(smartMinute) + ":" + ha.needZero(nows)).getTime()
 					+ 86400000)
@@ -105,12 +105,12 @@ public class MyController implements Initializable {
 
 			Runtime.getRuntime().exec("shutdown -s -t " + result);
 		} else {
-			// Ğ¡Ê±¡¢·ÖÖÓ¶¼ÏàÍ¬µÄÇé¿ö
-			System.out.println("ÏÖÔÚ£¿");
+			// å°æ—¶ã€åˆ†é’Ÿéƒ½ç›¸åŒçš„æƒ…å†µ
+			System.out.println("ç°åœ¨ï¼Ÿ");
 		}
 	}
 
-	// ÊäÈëÊ±·ÖÃë£¬±íÊ¾¶à¾ÃÖ®ºó¹Ø»ú
+	// è¾“å…¥æ—¶åˆ†ç§’ï¼Œè¡¨ç¤ºå¤šä¹…ä¹‹åå…³æœº
 	public void timeToShutdown(ActionEvent event) throws Exception {
 
 		int hour = Integer.parseInt(XC_shi.getText());
@@ -121,17 +121,17 @@ public class MyController implements Initializable {
 		ha.cancelShutdown(event);
 
 		int result = hour * 3600 + minute * 60 + second;
-		// °´Ê±¼äÖ´ĞĞ
+		// æŒ‰æ—¶é—´æ‰§è¡Œ
 		Runtime.getRuntime().exec("shutdown -s -t " + result);
 	}
 
 	public void cancelShutdown(ActionEvent event) throws Exception {
-		// È¡Ïû
+		// å–æ¶ˆ
 		Runtime.getRuntime().exec("shutdown -a");
 	}
 
 	public void exit(ActionEvent event) throws Exception {
-		// È¡Ïû
+		// å–æ¶ˆ
 		System.exit(0);;
 	}
 	
